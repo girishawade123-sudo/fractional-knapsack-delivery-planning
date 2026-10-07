@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-/* Merge the sorted halves lb..m and m+1..ub in decreasing order of ratio */
+
 void merge(float profit[], float weight[], float ratio[], int id[], int m, int lb, int ub){
     float tp[100], tw[100], tr[100];
     int ti[100], i = lb, j = m + 1, k = 0;
@@ -38,14 +38,13 @@ void calcRatio(float profit[], float weight[], float ratio[], int n){
     for(int i = 0; i < n; i++) ratio[i] = profit[i] / weight[i];
 }
 
-/* Packages must already be sorted by decreasing ratio */
 float knapsack(float profit[], float weight[], float frac[], int n, float capacity){
     float total = 0;
     for(int i = 0; i < n; i++){
-        if(weight[i] <= capacity){      /* whole package fits */
+        if(weight[i] <= capacity){     
             frac[i] = 1;
             capacity -= weight[i];
-        } else {                        /* only a fraction fits (0 once the truck is full) */
+        } else {                        
             frac[i] = capacity / weight[i];
             capacity = 0;
         }
